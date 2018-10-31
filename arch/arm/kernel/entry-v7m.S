@@ -189,7 +189,7 @@ ENDPROC(__switch_to)
  * Vector table
  */
 ENTRY(vector_table)
-	.long	0			@ 0 - Reset stack pointer
+	.long	0xeeeeeeee			@ 0 - Reset stack pointer
 	.long	__invalid_entry		@ 1 - Reset
 	.long	__invalid_entry		@ 2 - NMI
 	.long	__hardfault_entry	@ 3 - HardFault

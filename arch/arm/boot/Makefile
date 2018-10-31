@@ -34,6 +34,8 @@ ifeq ($(CONFIG_XIP_KERNEL),y)
 $(obj)/xipImage: vmlinux FORCE
 	$(call if_changed,objcopy)
 	@echo '  Kernel: $@ is ready (physical address: $(CONFIG_XIP_PHYS_ADDR))'
+	mkimage -A arm -O linux -T kernel -C none -n "Linux" -a 0x68003000 -e 0x68003001 -d ./arch/arm/boot/xipImage ./arch/arm/boot/uxipImage
+
 
 $(obj)/Image $(obj)/zImage: FORCE
 	@echo 'Kernel configured for XIP (CONFIG_XIP_KERNEL=y)'
